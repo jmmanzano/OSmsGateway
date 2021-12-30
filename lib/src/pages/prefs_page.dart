@@ -16,7 +16,9 @@ class _PrefsPageState extends State<PrefsPage> {
   PreferenciasUsuario preferencias = PreferenciasUsuario();
   final formKey = GlobalKey<FormState>();
   TextEditingController? _textController;
+  TextEditingController? _textControllerTimeout;
   int _port = 8080;
+  int _timeout = 500;
   bool _temaOscuro = false;
   bool _isHttps = false;
   @override
@@ -25,7 +27,10 @@ class _PrefsPageState extends State<PrefsPage> {
     _port = preferencias.puerto;
     _temaOscuro = preferencias.temaOscuro;
     _isHttps = preferencias.secure;
+    _timeout = preferencias.timeout;
     _textController = new TextEditingController(text: _port.toString());
+    _textControllerTimeout =
+        new TextEditingController(text: _timeout.toString());
   }
 
   @override
@@ -58,6 +63,39 @@ class _PrefsPageState extends State<PrefsPage> {
                       preferencias.puerto = int.parse(value);
                       setState(() {
                         _port = int.parse(value);
+                      });
+                    }
+                  },
+                  validator: (value) {
+                    print(value);
+                    if (utils.isNumeric(value!)) {
+                      return null;
+                    } else {
+                      return 'Solo números';
+                    }
+                  },
+                ),
+              ),
+              Divider(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: _textControllerTimeout,
+                  decoration: InputDecoration(
+                      labelText: 'Timeout',
+                      helperText:
+                          'Timeout de petición en milisegundos, minimo 200'),
+                  onChanged: (value) {
+                    if (utils.isNumeric(value)) {
+                      var t = int.parse(value);
+                      if (t <= 200) {
+                        t = 200;
+                        value = "200";
+                      }
+                      preferencias.timeout = t;
+                      setState(() {
+                        _timeout = t;
                       });
                     }
                   },

@@ -24,6 +24,14 @@ class PreferenciasUsuario {
     _prefs.setInt('puerto', puerto);
   }
 
+  int get timeout {
+    return _prefs.getInt('timeout') ?? 500;
+  }
+
+  set timeout(int timeout) {
+    _prefs.setInt('timeout', timeout);
+  }
+
   bool get temaOscuro {
     return _prefs.getBool('temaOscuro') ?? false;
   }

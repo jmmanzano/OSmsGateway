@@ -76,7 +76,8 @@ class _HomePageState extends State<HomePage> {
     if (connectivityResult == ConnectivityResult.wifi) {
       var args = {
         'serverChain': preferencias.serverChain,
-        'serverKey': preferencias.serverKey
+        'serverKey': preferencias.serverKey,
+        'timeout': preferencias.timeout,
       };
       await server.iniciar(
           port: preferencias.puerto,

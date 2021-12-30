@@ -1,8 +1,10 @@
+
 <!-- start project-info -->
 <!--
 project_title: OSmsGateway
 github_project: https://github.com/jmmanzano/OSmsGateway
 license: GPL
+icon: /home/josemi/programacion/flutter/osmsgateway/None
 homepage: https://github.com/jmmanzano/OSmsGateway
 license-badge: True
 contributors-badge: False
@@ -15,9 +17,7 @@ codefactor-badge: False
 <!-- start badges -->
 
 ![License GPL](https://img.shields.io/badge/license-GPL-green)
-![Contributors](https://img.shields.io/github/contributors-anon/jmmanzano/OSmsGateway)
 ![Last commit](https://img.shields.io/github/last-commit/jmmanzano/OSmsGateway)
-
 <!-- end badges -->
 
 <!-- start description -->
@@ -51,9 +51,19 @@ En la raíz del servidor cuenta con una interfaz para el envío de SMS.
 
 Su nivel de madurez actual es bajo.
 
+##Changelog
+### version 0.0.2
+Se añade timeout para ampliar el tiempo antes de que el server devuelva la request como erronea.
+
+### versión 0.0.1
+Versión inicial.
+
+
 <!-- end description -->
 
 <!-- start prerequisites -->
+
+
 
 <!-- end prerequisites -->
 
@@ -66,6 +76,8 @@ Puedes descargar el proyecto y construir tu propio APK con Android Studio.
 También puedes descargar el apk ya construido desde [aquí](https://github.com/jmmanzano/OSmsGateway/releases)
 
 Requiere permisos para LEER y ENVIAR SMS y para conocer el ESTADO DEL TELÉFONO.
+
+
 
 <!-- end installing -->
 
@@ -80,13 +92,19 @@ Al mantener la compatibilidad con REST SMS Gateway puedes enviar SMS mediante m�
 
 Se está implementando la parte de estatus, pero no es ni completa ni mantiene aún la compatibilidad con REST SMS Gateway
 
+
+
 <!-- end using -->
 
 <!-- start contributing -->
 
+
+
 <!-- end contributing -->
 
 <!-- start contributors -->
+
+
 
 <!-- end contributors -->
 

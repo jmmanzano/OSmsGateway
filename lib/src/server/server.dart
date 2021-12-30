@@ -15,13 +15,14 @@ class Server extends SimpleHttpServer {
   static const DELIVERED = 'DELIVERED';
   static const UNSENDED = 'UNSENDED';
   static const ERROR = 'ERROR';
-  static const TIMEOUT_COUNTER = 200;
+  int timeCounter = 200;
 
   iniciar(
       {required int port,
       InternetAddress? internetAddress,
       required bool secure,
       dynamic args}) async {
+    timeCounter = args['timeout'];
     Map<String, String> mapIps = new Map();
     bool iniciar = true;
     await NetworkInterface.list(
@@ -123,8 +124,7 @@ class Server extends SimpleHttpServer {
 
   Future<bool> _continuar(String status, int contador) async {
     return await Future.delayed(Duration(milliseconds: 50), () {
-      if (status != DELIVERED && contador < TIMEOUT_COUNTER) {
-        print(contador * 50);
+      if (status != DELIVERED && contador < timeCounter) {
         return true;
       } else {
         return false;
